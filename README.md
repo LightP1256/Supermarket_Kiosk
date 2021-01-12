@@ -1,2 +1,2 @@
-#COMP2000 Assignment
+# COMP2000 Assignment
 Java App
