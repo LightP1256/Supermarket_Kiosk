@@ -2,7 +2,8 @@ public class adminAcc {
     // Setting variable for admin username and password
     String username;
     String password;
-
+    public adminAcc() {
+    }
     public adminAcc(String logUser, String logPass) {
         this.username = logUser;
         this.password = logPass;
