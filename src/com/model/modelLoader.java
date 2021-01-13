@@ -24,6 +24,7 @@ public class modelLoader {
     public ArrayList<productData> getArrayListProductData() {
         return availableProduct;
     }
+    // Log admin account
     public void LogAdminAcc() {
         try {
             // Setting up file
@@ -48,6 +49,7 @@ public class modelLoader {
             e.printStackTrace();
         }
     }
+    // Log bank info
     public void logBankInfo() {
         try {
             // Setting up file
@@ -71,6 +73,40 @@ public class modelLoader {
             }
             // Close scanner when finished reading file
             scanner.close();
+        }
+        // Catches any errors
+        catch (FileNotFoundException e) { // Finding any errors in the try section
+            e.printStackTrace();
+        }
+    }
+    // Log product
+    public void logProduct() {
+        try {
+            // Setting up file
+            File file = new File(filePathProductData);
+            // Scanner to read each line within the file
+            Scanner scanner = new Scanner(file);
+            // Getting data from scanner
+            while (scanner.hasNextLine()) {
+                String columnRow = scanner.nextLine();
+                String[] tProduct = columnRow.split(spacer);
+                productData pData = new productData();
+                // Loading into product data
+                pData.pName = tProduct[0];
+                pData.pPrice = tProduct[1];
+                pData.pQuantity = Integer.parseInt(tProduct[2]);
+                pData.pTotal = Float.parseFloat(tProduct[3]);
+                availableProduct.add(pData);
+                float pPriceToFloat = Float.parseFloat(tProduct[1]);
+                pData.setPP(pPriceToFloat);
+                int pStockInt = Integer.parseInt(tProduct[2]);
+                pData.setPInStock(pStockInt);
+                float productTotal = Float.parseFloat(tProduct[3]);
+                pData.setPTotal(productTotal);
+            }
+            // Close scanner when finished reading file
+            scanner.close();
+            System.out.println("Product data file loaded");
         }
         // Catches any errors
         catch (FileNotFoundException e) { // Finding any errors in the try section

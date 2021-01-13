@@ -38,14 +38,10 @@ public class productData {
     public void setPBought(int productBought) {
         this.pBought = productBought;
     }
-    public void setProductPrice(float priceToFloat) {
-        this.setPP = priceToFloat;
+    public void setPP(float pPriceToFloat) {
+        this.setPP = pPriceToFloat;
     }
-    public void setProductInStock(int pStockInt) {
+    public void setPInStock(int pStockInt) {
         this.setPP = pStockInt;
     }
-
-
-
-
 }
