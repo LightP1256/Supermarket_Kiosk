@@ -1,4 +1,5 @@
 public class bankInfo {
+    // Declaring variables
     private String accountName;
     private int age;
     private float accountBalance;
