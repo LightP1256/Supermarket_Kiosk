@@ -36,18 +36,24 @@ public class selfCheckout extends JFrame {
         System.out.println();
         adminBtn.addActionListener(new ActionListener() {
             @Override
+            // Goes to admin login page
             public void actionPerformed(ActionEvent e) {
                 adminLog Page = new adminLog();
                 Page.setVisible(true);
                 dispose();
             }
         });
+        // Card Button
         cardPayBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                // Goes to bank verify page
+                bankVerify Page = new bankVerify();
+                Page.show();
+                dispose();
             }
         });
+        // Cash option on screen payment
         cashPayBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,18 +61,21 @@ public class selfCheckout extends JFrame {
                 changeAmountLbl.setText(String.valueOf(pTotal));
             }
         });
+        // Adding products to list with price and amount
         addProductBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 productListTxa.setText("");
                 String pName = addPTxf.getText();
+                // Map keys to values
                 for (productData p : hMap.keySet()) {
                     System.out.println(p.pName + ":" + pName);
                     if (p.pName.equals(pName)) {
                         hMap.put(p, hMap.get(p) + 1);
                     }
                 }
-                double pTotal = 0.00;
+                double pTotal = 0.0;
+                // Map keys to values
                 for (productData p : hMap.keySet()) {
                     pTotal += hMap.get(p) * Double.parseDouble(p.pPrice);
                     if (hMap.get(p) > 0) {
@@ -77,6 +86,7 @@ public class selfCheckout extends JFrame {
             }
         });
     }
+    // Working
     public static void service() {
         hMap.clear();
         for(productData productData : stockLevel) {
@@ -84,6 +94,7 @@ public class selfCheckout extends JFrame {
             System.out.println("Working");
         }
     }
+    // Receipt
     public void pTotalP() {
         // Two decimal places
         totalCostLbl.setText(String.format("%.2f", tPrice));

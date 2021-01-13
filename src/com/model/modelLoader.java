@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class modelLoader {
     // File path locations in resources
     public String filePathAdminAcc = "resources\\admin.txt";
-    public String filePathBankInfo = "resources\\bankInfo.txt";
+    public static String filePathBankInfo = "resources\\bankInfo.txt";
     public String filePathProductData = "resources\\stock.txt";
     // Split spacer
     public String spacer = "\\|";
@@ -112,6 +112,36 @@ public class modelLoader {
         }
         // Catches any errors
         catch (FileNotFoundException e) { // Finding any errors in the try section
+            e.printStackTrace();
+        }
+    }
+    public static bankInfo getBFrom(int bIndex) {
+        if (bIndex >= cBankVer.size()) {
+            return  null;
+        }
+        return cBankVer.get(bIndex);
+    }
+    public static void bInfoSave() {
+        try {
+            FileWriter writer = new FileWriter(filePathBankInfo);
+            for(int bIndex = 0; bIndex < cBankVer.size(); bIndex++) {
+                String columnRow = "";
+                if(bIndex > 0) {
+                    columnRow += "\n";
+                }
+                columnRow += cBankVer.get(bIndex).getAccountName();
+                String ageTString = Integer.toString(cBankVer.get(bIndex).getAge());
+                columnRow += "|" + ageTString;
+                String accBalTString = Float.toString(cBankVer.get(bIndex).getAccountBalance());
+                columnRow += "|" + accBalTString;
+                String actTString = Boolean.toString(cBankVer.get(bIndex).activeAccount());
+                columnRow += "|" + actTString;
+                writer.write(columnRow);
+            }
+            System.out.println("Bank info saved");
+            writer.close();
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

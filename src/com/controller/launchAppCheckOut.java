@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class launchAppCheckOut extends JFrame{
+public class launchAppCheckOut extends JFrame {
     private JPanel mainPanel;
     private JButton startBtn;
     private JLabel greetingLbl;
@@ -14,6 +14,7 @@ public class launchAppCheckOut extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(720, 600));
         pack();
+        // Goes to self checkout
         startBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
