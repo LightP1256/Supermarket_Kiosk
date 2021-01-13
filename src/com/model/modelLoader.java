@@ -9,7 +9,7 @@ public class modelLoader {
     public String filePathProductData = "resources\\stock.txt";
     // Split spacer
     public String spacer = "\\|";
-    // Array for Receipt
+    // Array for receipt
     public ArrayList<productData> pReceipt = new ArrayList<>();
     // Array for admin account
     public ArrayList<adminAcc> aAccount = new ArrayList<>();
@@ -26,8 +26,11 @@ public class modelLoader {
     }
     public void LogAdminAcc() {
         try {
+            // Setting up file
             File file = new File(filePathAdminAcc);
+            // Scanner to read each line within the file
             Scanner scanner = new Scanner(file);
+            // Getting data from scanner
             while (scanner.hasNextLine()) {
                 String columnRow = scanner.nextLine();
                 String[] adAccount = columnRow.split(spacer);
@@ -37,10 +40,42 @@ public class modelLoader {
                 aAccount.add(admin);
                 System.out.println(admin);
             }
-        scanner.close();
+            // Close scanner when finished reading file
+            scanner.close();
         }
+        // Catches any errors
         catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
+    public void logBankInfo() {
+        try {
+            // Setting up file
+            File file = new File(filePathBankInfo);
+            // Scanner to read each line within the file
+            Scanner scanner = new Scanner(file);
+            // Getting data from scanner
+            while (scanner.hasNextLine()) {
+                String columnRow = scanner.nextLine();
+                String[] userBankInfo = columnRow.split(spacer);
+                System.out.println(userBankInfo[0]);
+                bankInfo bUser = new bankInfo();
+                bUser.setAccountName(userBankInfo[0]);
+                int ageToInt = Integer.parseInt(userBankInfo[1]);
+                bUser.setAge(ageToInt);
+                float aBalanceToFloat = Float.parseFloat(userBankInfo[2]);
+                bUser.setAccountBalance(aBalanceToFloat);
+                boolean acAccount = Boolean.parseBoolean(userBankInfo[3]);
+                bUser.setActiveAccount(acAccount);
+                cBankVer.add(bUser);
+            }
+            // Close scanner when finished reading file
+            scanner.close();
+        }
+        // Catches any errors
+        catch (FileNotFoundException e) { // Finding any errors in the try section
+            e.printStackTrace();
+        }
+    }
+
 }
