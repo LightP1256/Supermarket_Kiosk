@@ -43,6 +43,7 @@ public class modelLoader {
             }
             // Close scanner when finished reading file
             scanner.close();
+            System.out.println("Login loaded");
         }
         // Catches any errors
         catch (FileNotFoundException e) {
@@ -73,6 +74,7 @@ public class modelLoader {
             }
             // Close scanner when finished reading file
             scanner.close();
+            System.out.println("Bank option loaded");
         }
         // Catches any errors
         catch (FileNotFoundException e) { // Finding any errors in the try section
