@@ -13,6 +13,7 @@ Customers can pay using cash or a card. Cash payment will calculate and display 
 The receipt requires a printout of the item names and their prices, the total price and payment method. If the payment method is cash, also print the change given.
 
 The receipt display is required to be in a separate GUI panel of the application. Use threading to inject the receipt data into the panel and output the text as you may see in paper receipts. This includes the company name, date and the information above. The process should only start when the thread has finished processing the receipt data.
+### video Link: https://youtu.be/Nsh6Kl_DD9Q
 ##### App opening with a welcome screen.
 ![Image of opening the app](https://github.com/LightP1256/COMP2000-Main/blob/master/picturesOfApp/Launch.PNG)
 ##### App checkout section where you can go to the admin section or stay in the section if your a customer.
